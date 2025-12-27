@@ -1,36 +1,213 @@
-# Collaborative Workspace Backend - Scaffold
+Live Deployment
 
-This is a starter scaffold for the **Real-Time Collaborative Workspace** backend assessment.
-Technology stack: **Node.js + TypeScript + Express**, with **Postgres** and **Redis** in Docker Compose.
+Base URL:
+https://collaborator-9p37.onrender.com
 
-## What’s included
-- Basic Express + TypeScript app with sensible folder structure
-- Dockerfile and docker-compose.yml (api + postgres + redis)
-- ESLint + Prettier config
-- Sample env file
-- Healthcheck endpoint
+Health Check:
+https://collaborator-9p37.onrender.com/health
 
-## Quick start (Docker Compose)
-1. Copy `.env.example` to `.env` and adjust values.
-2. Build and run:
-```bash
-docker-compose up --build
-```
-3. API will be available at `http://localhost:8080`. Healthcheck: `GET /health`.
+Swagger API Docs:
+https://collaborator-9p37.onrender.com/api/docs
 
-## Development (local)
-Install dependencies:
-```bash
-npm install
-npm run dev
-```
+⚠️ Note: The service is deployed on Render free tier and may cold-start after inactivity.
 
-## Next steps I can implement for you
-- Authentication (JWT + refresh tokens)
-- Database schema + migrations
-- Project & workspace CRUD APIs
-- WebSocket server + Redis Pub/Sub
-- Job queue + worker
-- Tests + CI/CD pipeline
+🛠️ Tech Stack
 
-Tell me which of those to work on next (I recommend: Authentication).
+Backend: Node.js, Express, TypeScript
+
+Database: PostgreSQL
+
+Caching / Rate Limiting: Redis
+
+Authentication: JWT (JSON Web Tokens)
+
+Authorization: Role-Based Access Control (RBAC)
+
+Real-time: Socket.IO
+
+API Docs: Swagger (OpenAPI)
+
+Containerization: Docker & Docker Compose
+
+Hosting: Render (Free Tier)
+
+✨ Features
+🔐 Authentication & Authorization
+
+User registration & login
+
+Password hashing using bcrypt
+
+JWT-based authentication
+
+Middleware-driven authorization
+
+🏢 Workspaces
+
+Create and list workspaces
+
+Invite members to workspaces
+
+Workspace roles:
+
+OWNER
+
+COLLABORATOR
+
+VIEWER
+
+📁 Projects
+
+Create projects inside workspaces
+
+List projects per workspace
+
+Delete projects
+
+Permission enforcement based on workspace role
+
+👥 Project Members
+
+Add users to projects
+
+Update member roles
+
+Remove members
+
+Ensures at least one OWNER per project
+
+Project roles:
+
+OWNER
+
+CONTRIBUTOR
+
+VIEWER
+
+📝 Activity Logs
+
+Logs key actions such as:
+
+Workspace creation
+
+Project creation/deletion
+
+Member add/remove/update
+
+Stored in PostgreSQL
+
+Fetchable via API
+
+Broadcasted via Socket.IO
+
+🔔 Real-time Updates
+
+Socket.IO integration
+
+Real-time activity notifications per workspace
+
+Supports collaborative environments
+
+📚 API Documentation (Swagger)
+
+Swagger UI is available at:
+
+/api/docs
+
+
+You can:
+
+Explore all APIs
+
+Test endpoints
+
+Provide JWT token via Authorize button
+
+🔑 Authentication in Swagger
+
+Login using:
+
+POST /api/v1/auth/login
+
+
+Copy the accessToken
+
+Click Authorize in Swagger
+
+Paste:
+
+Bearer <accessToken>
+
+⚙️ Environment Variables
+
+Example .env:
+
+PORT=8080
+JWT_SECRET=your_jwt_secret
+DATABASE_URL=postgresql://user:password@host:5432/dbname
+NODE_ENV=production
+
+🐳 Run Locally with Docker
+Prerequisites
+
+Docker
+
+Docker Compose
+
+Steps
+git clone <your-github-repo-url>
+cd collab-backend-stub
+docker compose up --build
+
+
+Server will be available at:
+
+http://localhost:8080
+
+
+Swagger:
+
+http://localhost:8080/api/docs
+
+🗄️ Database Setup
+
+PostgreSQL runs as a Docker container (locally)
+
+Tables are auto-created if missing on app startup
+
+No external database account required for local setup
+
+🌍 Deployment Notes
+
+Deployed on Render using Docker
+
+PostgreSQL is provided by Render
+
+WebSockets (Socket.IO) are supported
+
+Free tier may sleep after inactivity (cold start delay)
+
+Vercel is not used for backend deployment due to its serverless limitations (no persistent servers or WebSockets).
+
+🧪 Testing
+
+APIs tested via Swagger and curl
+
+Role-based access verified
+
+Database integrity validated using PostgreSQL queries
+
+📌 Future Enhancements (Optional)
+
+Background jobs using Redis queues
+
+Automated tests (Jest / Supertest)
+
+Email notifications
+
+Fine-grained audit logs
+
+👨‍💻 Author
+
+Aryan Jaiswal
+Backend Developer
